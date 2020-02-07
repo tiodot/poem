@@ -1,13 +1,12 @@
 import AV from 'leancloud-storage'
 
-export const Collection = AV.Object.extend('Collection')
-export const CollectionWork = AV.Object.extend('CollectionWork')
+const Collection = AV.Object.extend('Collection')
 
 Collection.getById = function (id) {
     return AV.Cloud.rpc('getCollectionById', { collectionId: id })
 }
 
-Collection.getCollections = function (kind) {
+Collection.getCollections = function () {
     // return AV.Cloud.run('getAllCollecions')
     return AV.Cloud.rpc('getAllCollections')
 }
@@ -16,7 +15,7 @@ Collection.getWorks = function (id, page = 1, perPage = 50) {
     return AV.Cloud.rpc('getWorksByCollection', { collectionId: id, page, perPage })
 }
 
-Collection.getPartCollections = function (kind) {
+Collection.getPartCollections = function () {
     // return AV.Cloud.rpc('getAllCollecions', {
     //   queryLimit: 20 // 此处limit失效， 不知为何 // 缓存原因
     // })
@@ -80,7 +79,7 @@ Collection.getCollectionCountByKindList = (kindList) => {
   })
 }
 
-
+export default Collection
 
 // WEBPACK FOOTER //
 // ./src/models/collection.js
