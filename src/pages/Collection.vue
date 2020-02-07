@@ -29,13 +29,13 @@ export default {
   created() {
     // 获取collection
     const objectId = this.$route.params.id
+    const visitedHistory = JSON.parse(window.localStorage.getItem('poem_history'))
     Collection.getWorks(objectId, 1, 50).then(res => {
       // 判断是否已经完成
-      res.forEach(item => {
+      visitedHistory && res.forEach(item => {
         const id = item.get('objectId')
-        const history = window.localStorage.getItem(id)
-        if (history) {
-          item.set('review', String(this.needReview(history)))
+        if (visitedHistory[id]) {
+          item.set('review', String(this.needReview(visitedHistory[id])))
         }
       })
       this.lists.push(...res)

@@ -15,6 +15,11 @@ export default new Router({
       path: '/collection/:id',
       name: 'collection',
       component: () => import('./pages/Collection.vue')
+    },
+    {
+      path: '/work/:id',
+      name: 'work',
+      component: () => import('./pages/Work.vue')
     }
   ]
 })
