@@ -20,6 +20,11 @@ export default new Router({
       path: '/work/:id',
       name: 'work',
       component: () => import('./pages/Work.vue')
+    },
+    {
+      path: '/review',
+      name: 'review',
+      component: () => import('./pages/Review.vue')
     }
   ]
 })
